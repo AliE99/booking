@@ -12,8 +12,9 @@ namespace tests
         {
             var body = new{
                 Id="1" ,
-                StartTime = "2017-11-01T02:00:00" ,
-                EndTime="2017-11-01T01:00:00", 
+                Title="sahdf",
+                StartTime = "2020-11-03T00:00:00" ,
+                EndTime="2020-11-03T01:00:00", 
                 Summary ="jafarshow",
                 Price ="30",
                 SalonId="1"
@@ -35,9 +36,10 @@ namespace tests
         public void ConflictShowTimeTest()
         {
             var body = new{
-                Id="4" ,
-                StartTime = "2017-11-01T00:00:00" ,
-                EndTime="2017-11-01T01:00:00", 
+                Id="7" ,
+                Title="sahdf",
+                StartTime = "2020-11-01T00:00:00" ,
+                EndTime="2020-11-01T01:00:00", 
                 Summary ="jafarshow",
                 Price ="30",
                 SalonId="1"
@@ -61,9 +63,10 @@ namespace tests
         public void StartTimeGreatarThanEndTimeTest()
         {
             var body = new{
-                Id="4" ,
-                StartTime = "2017-11-01T02:00:00" ,
-                EndTime="2017-11-01T01:00:00", 
+                Id="7" ,
+                Title="sahdf",
+                StartTime = "2020-11-04T02:00:00" ,
+                EndTime="2020-11-04T01:00:00", 
                 Summary ="jafarshow",
                 Price ="30",
                 SalonId="1"
@@ -81,13 +84,15 @@ namespace tests
                 .TestStatus("time test", b =>  b == 400)
                 .AssertAll();
         }//passed
+
         [Fact]
         public void NegativePricePost()
         {
              var body = new{
-                Id="4" ,
-                StartTime = "2017-11-01T02:00:00" ,
-                EndTime="2017-11-01T01:00:00", 
+                Id="7" ,
+                Title="sahdf",
+                StartTime = "2020-11-05T00:00:00" ,
+                EndTime="2020-11-05T01:00:00", 
                 Summary ="jafarshow",
                 Price ="-45",
                 SalonId="1"
@@ -110,9 +115,10 @@ namespace tests
         public void StartTimeTest()
         {
             var body = new{
-                Id="4" ,
-                StartTime = "2017-11-01T02:00:00" ,
-                EndTime="2017-11-01T01:00:00", 
+                Id="7" ,
+                Title="sahdf",
+                StartTime = "2020-11-06T02:00:00" ,
+                EndTime="2020-11-06T01:00:00", 
                 Summary ="jafarshow",
                 Price ="30",
                 SalonId="1"
@@ -135,12 +141,13 @@ namespace tests
         public void SalonIdIsNotAvailableTest()
         {
             var body = new{
-                Id="4" ,
-                StartTime = "2017-11-01T02:00:00" ,
-                EndTime="2017-11-01T01:00:00", 
+                Id="7" ,
+                Title="sahdf",
+                StartTime = "2020-11-07T00:00:00" ,
+                EndTime="2020-11-07T01:00:00", 
                 Summary ="jafarshow",
                 Price ="30",
-                SalonId="18"
+                SalonId="210"
                 
             };
             new RestAssured()
@@ -160,13 +167,13 @@ namespace tests
         public void TitleCharacterTest()
         {
             var body =new{
-                Id="4" ,
-                StartTime = "2017-11-01T00:00:00" ,
-                EndTime="2017-11-01T01:00:00", 
+                Id="7" ,
+                StartTime = "2020-11-08T00:00:00" ,
+                EndTime="2020-11-08T01:00:00", 
                 Summary ="moretha",
                 Title="woejfnerijnfwirjnfeirjfnerijfnerijfnerifjn",
                 Price ="30",
-                SalonId="18"
+                SalonId="1"
 
             };
             new RestAssured()
@@ -186,12 +193,13 @@ namespace tests
         public void PriceCeilingTest()
         {
             var body =new{
-                Id="4" ,
-                StartTime = "2017-11-01T00:00:00" ,
-                EndTime="2017-11-01T01:00:00", 
+                Id="7" ,
+                Title="sahdf",
+                StartTime = "2020-11-09T00:00:00" ,
+                EndTime="2020-11-09T01:00:00", 
                 Summary ="jafarshow",
                 Price ="120",
-                SalonId="18"
+                SalonId="1"
 
             };
             new RestAssured()
@@ -212,10 +220,11 @@ namespace tests
         public void MinimumShowTimeTest()
         {
             var body =new{
-                Id="4" ,
-                StartTime = "2017-11-01T00:00:00" ,
-                EndTime="2017-11-01T18:00:00", 
-                Summary ="jafarsh//comparing diffrence between start and end with show timeow",
+                Id="7",
+                Title="sahdf",
+                StartTime = "2020-11-10T00:00:00" ,
+                EndTime="2020-11-10T00:15:00", 
+                Summary ="jafarsh",
                 Price ="120",
                 SalonId="1"
 
@@ -237,9 +246,10 @@ namespace tests
         public void MaximumShowTimeTest()
         {
              var body =new{
-                Id="4" ,
-                StartTime = "2017-11-01T00:00:00" ,
-                EndTime="2017-11-01T00:15:00", 
+                Id="7" ,
+                Title="sahdf",
+                StartTime = "2020-11-01T00:00:00" ,
+                EndTime="2020-11-01T17:00:00", 
                 Summary ="jafarshow",
                 Price ="120",
                 SalonId="1"
@@ -257,8 +267,6 @@ namespace tests
                 .TestStatus("show time test", b =>  b == 400)
                 .AssertAll();
         }
-
-                    
 
     }
 }

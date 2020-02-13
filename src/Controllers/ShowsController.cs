@@ -26,21 +26,25 @@ namespace Booking.Controllers
 
             if(testShow!=null)
             {
+                Console.WriteLine("conflict request id");
                 return Conflict();
             }
 
             if(show.StartTime.Hour>=show.EndTime.Hour)
             {
+                Console.WriteLine("bad request time");
                 return BadRequest();
             }
 
             if(show.Price < 0)
             {
+                Console.WriteLine("bad request price");
                 return BadRequest();
             }
 
             if(show.StartTime<=DateTime.Now)
             {
+                Console.WriteLine("bad request starttime<now");
                 return BadRequest();
             }
 
@@ -48,6 +52,7 @@ namespace Booking.Controllers
 
             if(salonId==null)
             {
+                Console.WriteLine("bad request salon id null");
                 return BadRequest();
             }
 
@@ -55,10 +60,12 @@ namespace Booking.Controllers
 
             if(titleCharacters.Length>10)
             {
+                Console.WriteLine("bad request charachter length");
                 return BadRequest();
             }
             if(show.Price>MaximumPrice)
             {
+                Console.WriteLine("bad request maximum price");
                 return BadRequest();
             }
 
@@ -66,6 +73,7 @@ namespace Booking.Controllers
 
             if(showTime<MinimumTime||showTime>MaximumTime)
             {
+                Console.WriteLine("bad request minimum maximum time");
                 return BadRequest();
 
             }
@@ -74,6 +82,7 @@ namespace Booking.Controllers
 
             if(hasConflict)
             {
+                Console.WriteLine("conflict request salon");
                 return Conflict();
             }
 
