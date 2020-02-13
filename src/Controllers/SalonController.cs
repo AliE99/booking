@@ -21,5 +21,19 @@ namespace Booking.Controllers
 
         // }
 
+        [HttpPost]
+
+        public ActionResult CreateSalon([FromBody]Salon salon)
+        {
+            if(salon.SeatWidth<0)
+            {
+                return BadRequest();
+            }
+            _context.Salons.Add(salon);
+            _context.SaveChanges();
+            return Ok();
+        }
+
+
     }
 }

@@ -25,7 +25,7 @@ namespace tests
                 .Header("Accept-Encoding","utf-8")
                 .Body(body)
             .When()
-                .Post("http://localhost:5000/show")
+                .Post("http://localhost:5000/shows")
                 .Then()
                 .TestStatus("repetitious id test", b =>  b == 409)
                 .AssertAll();
@@ -49,7 +49,7 @@ namespace tests
                 .Header("Accept-Encoding","utf-8")
                 .Body(body)
             .When()
-                .Post("http://localhost:5000/show")
+                .Post("http://localhost:5000/shows")
                 .Then()
                 .TestStatus("conflict time test", b =>  b == 409)
                 .AssertAll();
@@ -76,7 +76,7 @@ namespace tests
                 .Header("Accept-Encoding","utf-8")
                 .Body(body)
             .When()
-                .Post("http://localhost:5000/show")
+                .Post("http://localhost:5000/shows")
                 .Then()
                 .TestStatus("time test", b =>  b == 400)
                 .AssertAll();
@@ -100,7 +100,7 @@ namespace tests
                 .Header("Accept-Encoding","utf-8")
                 .Body(body)
             .When()
-                .Post("http://localhost:5000/show")
+                .Post("http://localhost:5000/shows")
                 .Then()
                 .TestStatus("negative price test", b =>  b == 400)
                 .AssertAll();
@@ -125,7 +125,7 @@ namespace tests
                 .Header("Accept-Encoding","utf-8")
                 .Body(body)
             .When()
-                .Post("http://localhost:5000/show")
+                .Post("http://localhost:5000/shows")
                 .Then()
                 .TestStatus("negative price test", b =>  b == 400)
                 .AssertAll();
@@ -150,7 +150,7 @@ namespace tests
                 .Header("Accept-Encoding","utf-8")
                 .Body(body)
             .When()
-                .Post("http://localhost:5000/show")
+                .Post("http://localhost:5000/shows")
                 .Then()
                 .TestStatus("negative price test", b =>  b == 400)
                 .AssertAll();
@@ -176,7 +176,7 @@ namespace tests
                 .Header("Accept-Encoding","utf-8")
                 .Body(body)
             .When()
-                .Post("http://localhost:5000/show")
+                .Post("http://localhost:5000/shows")
                 .Then()
                 .TestStatus("negative price test", b =>  b == 400)
                 .AssertAll();
@@ -201,7 +201,7 @@ namespace tests
                 .Header("Accept-Encoding","utf-8")
                 .Body(body)
             .When()
-                .Post("http://localhost:5000/show")
+                .Post("http://localhost:5000/shows")
                 .Then()
                 .TestStatus("negative price test", b =>  b == 400)
                 .AssertAll();
@@ -227,7 +227,7 @@ namespace tests
                 .Header("Accept-Encoding","utf-8")
                 .Body(body)
             .When()
-                .Post("http://localhost:5000/show")
+                .Post("http://localhost:5000/shows")
                 .Then()
                 .TestStatus("show time test", b =>  b == 400)
                 .AssertAll();
@@ -252,7 +252,7 @@ namespace tests
                 .Header("Accept-Encoding","utf-8")
                 .Body(body)
             .When()
-                .Post("http://localhost:5000/show")
+                .Post("http://localhost:5000/shows")
                 .Then()
                 .TestStatus("show time test", b =>  b == 400)
                 .AssertAll();
