@@ -10,67 +10,79 @@ namespace Booking.Controllers
     [ApiController]
     public class ShowController : ControllerBase
     {
-        public AppDbContext _appDbContext { get; set; }
+        private AppDbContext _appDbContext { get; set; }
 
-        public ShowController(AppDbContext appDbContext) {
+        public ShowController(AppDbContext appDbContext)
+        {
             _appDbContext = appDbContext;
         }
 
         [HttpPost]
-        public IActionResult post([FromBody]Show show) {
-            
-            if (show == null) {
-                return BadRequest();
-            }
-
-            if (show.EndTime == null || show.StartTime == null || show.Title == null ||
-                show.Summary == null || show.Price < 0) 
+        public IActionResult Post([FromBody] Show show)
+        {
+            if (show == null)
             {
                 return BadRequest();
             }
 
-            if (show.StartTime <= DateTime.Now) {
-                return Conflict();
-            }
-
-            if (show.StartTime >= show.EndTime) {
+            if (show.EndTime == null || show.StartTime == null || show.Title == null ||
+                show.Summary == null || show.Price < 0)
+            {
                 return BadRequest();
             }
 
-            if (!isSalonAvailable(show.SalonId)) {
+            if (show.StartTime <= DateTime.Now)
+            {
+                return Conflict();
+            }
+
+            if (show.StartTime >= show.EndTime)
+            {
+                return BadRequest();
+            }
+
+            if (!IsSalonAvailable(show.SalonId))
+            {
                 return Conflict();
             }
 
             const int maxSummaryLenght = 250;
             const int maxTitleLenght = 40;
-            if (show.Summary.Length > maxSummaryLenght || show.Title.Length > maxTitleLenght) {
+            if (show.Summary.Length > maxSummaryLenght || show.Title.Length > maxTitleLenght)
+            {
                 return BadRequest();
             }
 
             const int maxPrice = 100;
-            if (show.Price > maxPrice) {
+            if (show.Price > maxPrice)
+            {
                 return BadRequest();
             }
 
-            const int  minShowTime = 30;
+            const int minShowTime = 30;
             const int maxShowTime = 120;
             int showLenght = (show.EndTime - show.StartTime).Minutes;
-            if (showLenght < minShowTime || showLenght > maxShowTime){
+            if (showLenght < minShowTime || showLenght > maxShowTime)
+            {
                 return BadRequest();
-            }   
+            }
 
-            _appDbContext.shows.Add(show);
+            _appDbContext.Shows.Add(show);
             _appDbContext.SaveChanges();
-            return Created("show created",show);
+            return Created("show created", show);
         }
 
-        public bool isSalonAvailable(int salonId) {
-            var salonIds = _appDbContext.salons.Select(s => s.Id);
-            foreach (int id in salonIds) {
-                if (salonId == id) {
+        public bool IsSalonAvailable(int salonId)
+        {
+            var salonIds = _appDbContext.Salons.Select(s => s.Id);
+            foreach (int id in salonIds)
+            {
+                if (salonId == id)
+                {
                     return true;
                 }
             }
+
             return false;
         }
     }
